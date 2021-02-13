@@ -91,8 +91,8 @@
                     name: '',
                     email: '',
                     password: '',
-                    gender: 'Male',
-                    isMarried: 1,
+                    gender: '',
+                    isMarried: null,
                     address: ''
                 },
 
