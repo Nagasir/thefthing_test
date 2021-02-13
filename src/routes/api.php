@@ -20,7 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/customers', 'CustomerController@index');
 Route::prefix('/customer')->group(function (){
     Route::post('/', 'CustomerController@store');
-    Route::put('/{id}', 'CustomerController@store');
+    Route::put('/{id}', 'CustomerController@update');
     Route::delete('/{id}', 'CustomerController@destroy');
     Route::get('/{id}', 'CustomerController@show');
 });
