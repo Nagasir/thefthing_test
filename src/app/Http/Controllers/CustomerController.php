@@ -2,9 +2,19 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Spatie\QueryBuilder\AllowedFilter;
+use Spatie\QueryBuilder\QueryBuilder;
+
+use App\Http\CustomFilter\EmailFilter;
+use App\Http\CustomFilter\GenderFilter;
+use App\Http\CustomFilter\NameFilter;
+use App\Http\CustomFilter\AddressFilter;
+use App\Http\CustomFilter\MarriageFilter;
+
 
 class CustomerController extends Controller
 {
@@ -15,13 +25,25 @@ class CustomerController extends Controller
      */
     public function index()
     {
+        $customer = QueryBuilder::for(Customer::class)
+            ->allowedFilters([
+                AllowedFilter::custom('name', new NameFilter),
+                AllowedFilter::custom('email', new EmailFilter),
+                AllowedFilter::custom('gender', new GenderFilter),
+                AllowedFilter::custom('is_married', new MarriageFilter),
+                AllowedFilter::custom('address', new AddressFilter)
+            ])
+            ->defaultSort('-created_at')
+            ->allowedSorts('name', 'email', 'gender', 'is_married', 'address')
+            ->paginate(\request()->get('size') ?? 5);
+
         return response()->json([
             'status' => [
                 'code' => 200,
                 'response' => "success",
                 'message' => ""
             ],
-            'result' => Customer::latest()->get()
+            'result' => $customer
         ], 200);
     }
 

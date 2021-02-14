@@ -46,8 +46,9 @@ services:
       - laravel
 
   composer:
-    image: composer:latest
+    image: composer:1.10
     container_name: composer
+    working_dir: /var/www/html
     volumes:
       - ./src:/var/www/html
     networks:
