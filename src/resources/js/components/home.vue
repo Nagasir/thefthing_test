@@ -38,7 +38,7 @@
                                 <b-form-input
                                     v-model="filter"
                                     type="search"
-                                    placeholder="Type to Search"
+                                    placeholder="Search Everywhere"
                                 ></b-form-input>
                             </b-col>
                         </b-row>
