@@ -65,7 +65,7 @@ services:
       - laravel
 
   artisan:
-    image: thefthing_artisan:latest
+    image: thefthing_test_php:latest
     container_name: artisan
     volumes:
       - ./src:/var/www/html
