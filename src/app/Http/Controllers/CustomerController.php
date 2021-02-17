@@ -111,7 +111,7 @@ class CustomerController extends Controller
                 'message' => "Data Not Found"
             ],
             'result' => []
-        ]);
+        ], 404);
     }
 
     /**
@@ -166,7 +166,7 @@ class CustomerController extends Controller
                 'message' => "Data Not Found"
             ],
             'result' => []
-        ]);
+        ], 404);
 
     }
 
@@ -199,6 +199,6 @@ class CustomerController extends Controller
                 'message' => "Data Not Found"
             ],
             'result' => []
-        ]);
+        ], 404);
     }
 }

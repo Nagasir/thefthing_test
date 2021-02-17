@@ -9,7 +9,7 @@ class NameFilter implements Filter
 {
     public function __invoke(Builder $query, $value, string $property): Builder
     {
-       return $query->orWhere($property, 'like', '%'.$value.'%');
+       return $query->where($property, 'like', '%'.$value.'%');
     }
 }
 
