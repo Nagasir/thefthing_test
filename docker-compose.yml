@@ -65,7 +65,9 @@ services:
       - laravel
 
   artisan:
-    image: thefthing_test_php:latest
+    build:
+      context: .
+      dockerfile: php.dockerfile
     container_name: artisan
     volumes:
       - ./src:/var/www/html
